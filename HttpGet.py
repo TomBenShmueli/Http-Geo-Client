@@ -1,12 +1,24 @@
 import requests
 
+#  A function that formats a string into a Google accepted string by replacing special characters with "+"
 def formattogooglestring(string):
-    string.sub(r"[^a-zA-Z0-9]", "+")
+    specialchars = '-+ ~`,./_'
+    for char in specialchars:
+        string = string.replace(char, "+")
     return string
 
+def successfulrequest(request):
+    if data is None:
+        return True
+    else:
+        return False
+
+place = "Tel Aviv Israel Rabin Square"
+place = formattogooglestring(place)
+print(place)
 
 #  Location is a string in the form of "Country+City+Street"
-#  Can be formatted
+#  Can be formatted by the
 location = "XXXXXXXXXXXXXXXXXXXX"
 location = formattogooglestring(location)
 
@@ -15,7 +27,7 @@ location = formattogooglestring(location)
 API_KEY = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
 
 #  Target URL - includes location and API key
-url = ('https://maps.googleapis.com/maps/api/geocode/json?address=' +location+ '&key=' + API_KEY )
+url = ('https://maps.googleapis.com/maps/api/geocode/json?address=' +location+ '&key=' + API_KEY)
 
 print(url)
 #  Parameters dictionary in order to define the API key
